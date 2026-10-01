@@ -226,6 +226,9 @@ def post_pref(self, apt_packages, packages, upgrade=False):
                                   .format(ngxcom),
                                   'locations.mustache', data)
                 # traffic advice file
+                traffic_advice_dir = '/var/www/html/.well-known'
+                if not os.path.isdir(traffic_advice_dir):
+                    os.makedirs(traffic_advice_dir, exist_ok=True)
                 WOTemplate.deploy(self,
                                   '/var/www/html/'
                                   '.well-known/traffic-advice',
